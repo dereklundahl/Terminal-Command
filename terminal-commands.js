@@ -11,13 +11,14 @@ module.exports.ls = () => {
   });
 };
 
-module.exports.touch = () => {
-
+module.exports.touch = (fileName) => {
+  fs.writeFile(fileName, 'Test file', err => {
+    if(err)throw err;
+    console.log(`File ${fileName} has been created`);
+  });
 };
 
-module.exports.mkdir = (folder) => {
-  fs.mkdir('./', (err, folder) => {
-    if (err) throw err;
-    console.log(folder);
-  });
+module.exports.mkdir = (directoryName) => {
+  fs.mkdir(directoryName);
+    console.log(`Directory ${directoryName} has been created`);
 };
